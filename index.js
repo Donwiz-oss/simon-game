@@ -4,7 +4,7 @@ var userClickedPattern = [];
 var started = false;
 var gameLevel = 0;
 
-// ✅ Bind click handler ONCE
+// button clicks
 $(".btn").click(function(event){
     var userChosenColor = event.target.id;
     userClickedPattern.push(userChosenColor);
@@ -38,6 +38,7 @@ $(document).on("keydown", function() {
     }
 });
 
+// check user clicks to game patterns
 function checkAnswer(currentLevel) {
     if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) {
         console.log("correct");
@@ -48,8 +49,6 @@ function checkAnswer(currentLevel) {
             }, 1000);
         }
     } else {
-        console.log("wrong");
-        // Play wrong sound or reset game here
         new Audio("sounds/wrong.mp3").play();
         $("h1").html("Oops!! You failed!")
         setTimeout(() => {
